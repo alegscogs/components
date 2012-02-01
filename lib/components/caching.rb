@@ -91,7 +91,7 @@ module Components::Caching
     #
     # Cache options will be passed through to the cache store's read/write methods.
     def cache(action, cache_options = nil)
-      return unless ActionController::Base.cache_configured?
+      return unless ActionController::Base.send :cache_configured?
 
       class_eval <<-EOL, __FILE__, __LINE__
         cattr_accessor :#{action}_cache_options
